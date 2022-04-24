@@ -40,6 +40,37 @@ public class Main {
         System.out.println("Initial array: " + Arrays.toString(nums));
         reverseArray(nums);
         System.out.println("Reversed array: " + Arrays.toString(nums));
+
+        //Task 6. Additional.
+        System.out.println("\nTask 6. Calculate an average expense.\n");
+        int[] dailyExpenses = generateRandomArray();
+
+        double averageExpense = getAverageExpense(dailyExpenses);
+        System.out.printf("Average daily expense is %.2f rubles.\n", averageExpense);
+
+
+    }
+
+    public static double getAverageExpense(int[] expenses) {
+        int monthlyExpensesAmount = getMonthlyExpensesAmount(expenses);
+        return monthlyExpensesAmount * 1.0 / expenses.length;
+    }
+
+    public static int getMonthlyExpensesAmount(int[] expenses) {
+        int amount = 0;
+        for (int expense : expenses) {
+            amount += expense;
+        }
+        return amount;
+    }
+
+    public static int[] generateRandomArray() {
+        java.util.Random random = new java.util.Random();
+        int[] arr = new int[30];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100_000) + 100_000;
+        }
+        return arr;
     }
 
     public static void printYearCharacteristic(int year) {
